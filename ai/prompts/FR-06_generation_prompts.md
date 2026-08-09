@@ -3,8 +3,6 @@
 - **Sinh viên:** 23127362
 - **Feature:** FR-06 — Product Detail, ô Số lượng + nút "Thêm vào giỏ hàng"
 - **Nguồn test case:** `report/FR-06_ProductDetail.md` (HW02) — 14 case: DT1–DT8, BT1–BT6
-- **AI dùng để sinh:** _(điền tên + phiên bản)_
-- **Ngày giờ chạy:** _(điền, dùng cho §9 AI Audit)_
 
 ## Vì sao chia 5 prompt
 
