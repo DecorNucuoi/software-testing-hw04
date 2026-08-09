@@ -107,3 +107,16 @@ export function logRunHeader(scope: string): void {
 }
 
 export { expect };
+
+/**
+ * Re-export các KIỂU của Playwright.
+ *
+ * Import chỉ-kiểu từ '@playwright/test' vốn vô hại: TypeScript xoá nó lúc biên dịch, không tạo
+ * binding runtime, nên network guard vẫn được áp đầy đủ. Nhưng nếu cho phép, quy tắc "spec không
+ * được import từ '@playwright/test'" mất tính kiểm được bằng máy — không còn phân biệt được import
+ * kiểu (vô hại) với import giá trị (làm hỏng guard) bằng một lệnh grep.
+ *
+ * Re-export ở đây giữ cho `grep '@playwright/test' tests/` luôn trả về 0 kết quả, và 0 kết quả đó
+ * là bằng chứng kiểm chứng được rằng không spec nào lách guard.
+ */
+export type { TestInfo, Page, Locator, APIRequestContext } from '@playwright/test';
