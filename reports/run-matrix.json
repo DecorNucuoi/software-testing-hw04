@@ -1,0 +1,39 @@
+{
+  "studentId": "23127362",
+  "generatedAt": "2026-08-09T09:15:56.642Z",
+  "totalRuns": 3,
+  "passedRuns": 0,
+  "failedRuns": 3,
+  "runs": [
+    {
+      "feature": "fr06",
+      "browser": "chromium",
+      "reportDir": "reports/html-fr06-chromium",
+      "startedAt": "2026-08-09T09:06:08.714Z",
+      "finishedAt": "2026-08-09T09:08:53.657Z",
+      "exitCode": 1,
+      "testsPassed": false,
+      "stamped": true
+    },
+    {
+      "feature": "fr06",
+      "browser": "firefox",
+      "reportDir": "reports/html-fr06-firefox",
+      "startedAt": "2026-08-09T09:08:53.657Z",
+      "finishedAt": "2026-08-09T09:12:33.894Z",
+      "exitCode": 1,
+      "testsPassed": false,
+      "stamped": true
+    },
+    {
+      "feature": "fr06",
+      "browser": "webkit",
+      "reportDir": "reports/html-fr06-webkit",
+      "startedAt": "2026-08-09T09:12:33.894Z",
+      "finishedAt": "2026-08-09T09:15:56.641Z",
+      "exitCode": 1,
+      "testsPassed": false,
+      "stamped": true
+    }
+  ]
+}
