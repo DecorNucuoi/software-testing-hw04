@@ -1,0 +1,14 @@
+node_modules/
+test-results/
+playwright/.cache/
+*.log
+.DS_Store
+.env
+
+# Giữ lại HTML report vì đề bài yêu cầu nộp kèm (bỏ comment dòng dưới nếu repo quá nặng)
+# reports/
+
+# Nhưng KHÔNG commit report của smoke test: smoke chỉ dùng để nghiệm thu môi trường,
+# không nằm trong 9 browser run tính điểm. Loại ra để người chấm đếm đúng 9 thư mục.
+reports/html-smoke-*/
+reports/json/results-smoke-*.json
