@@ -1,0 +1,1060 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/sessions/peaceful-zealous-lovelace/mnt/HW04/node_modules/@playwright/test/cli.js",
+      "test",
+      "tests/fr09-coupon.spec.ts",
+      "--list"
+    ],
+    "configFile": "/sessions/peaceful-zealous-lovelace/mnt/HW04/playwright.config.ts",
+    "rootDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "Run by": "23127362",
+      "Student ID": "23127362",
+      "Run at (ISO 8601)": "2026-08-09T10:33:16.606Z",
+      "Browser project": "all",
+      "Feature under test": "Toàn bộ suite (FR-06 + FR-09 + FR-15)",
+      "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+      "Homework": "HW04 — Automation Testing"
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "Run by": "23127362",
+          "Student ID": "23127362",
+          "Run at (ISO 8601)": "2026-08-09T10:33:16.606Z",
+          "Browser project": "all",
+          "Feature under test": "Toàn bộ suite (FR-06 + FR-09 + FR-15)",
+          "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+          "Homework": "HW04 — Automation Testing"
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "Run by": "23127362",
+          "Student ID": "23127362",
+          "Run at (ISO 8601)": "2026-08-09T10:33:16.606Z",
+          "Browser project": "all",
+          "Feature under test": "Toàn bộ suite (FR-06 + FR-09 + FR-15)",
+          "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+          "Homework": "HW04 — Automation Testing"
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "Run by": "23127362",
+          "Student ID": "23127362",
+          "Run at (ISO 8601)": "2026-08-09T10:33:16.606Z",
+          "Browser project": "all",
+          "Feature under test": "Toàn bộ suite (FR-06 + FR-09 + FR-15)",
+          "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+          "Homework": "HW04 — Automation Testing"
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/sessions/peaceful-zealous-lovelace/mnt/HW04/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "reports/html-suite-all",
+          "open": "never",
+          "title": "HW04 — SUITE on all — Run by: 23127362 — 2026-08-09T10:33:16.606Z"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/json/results-suite-all.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fr09-coupon.spec.ts",
+      "file": "fr09-coupon.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "FR-09 — Mã giảm giá trên trang thanh toán",
+          "file": "fr09-coupon.spec.ts",
+          "line": 439,
+          "column": 6,
+          "specs": [
+            {
+              "title": "DT1 [SAVE10] — Công thức percent (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã phần trăm",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-fe7dd7621607602a409e",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT2 [BIGBUY] — Công thức fixed (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã giảm tiền tuyệt đối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-beaee0d0eeccb0d4acee",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT3 [INVALID] — C1 — mã không tồn tại — Mã được sinh theo đúng công thức đặt tên của suite nhưng KHÔNG được tạo trong database, nên chắc chắn không tồn tại",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-03b7b514c2e2e177b798",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT4 [<EMPTY>] — C1 — chuỗi mã rỗng, chặn ở tầng giao diện — Nút Áp dụng bị vô hiệu hoá khi ô mã rỗng nên request không bao giờ rời trình duyệt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-508ad54981f2aed02fe1",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT5 [EXPIRED] — C2 — mã đã hết hạn — Tổng đơn 200000 nằm trên min 100000 một quãng rộng nên C3 hợp lệ và cách xa biên",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-6b5f50ce621265c965e5",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT6 [SAVE10] — C3 — chưa đạt giá trị đơn tối thiểu — Ca đại diện của lớp không hợp lệ theo C3, đặt cách biên 100000 để phân biệt với BT1 vốn kiểm chính xác biên dưới trừ một",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-fd74e731f1dbcb4c9e81",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT7 [SAVE10] — C4 — người dùng chưa đăng nhập — Coupon VẪN phải được tạo dù test chạy ở trạng thái đăng xuất — nếu không, một lần đỏ có thể được giải thích bằng C1 thay vì C4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-9fd7a86c99f208480b72",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT8 [SAVE10] — C5 — đã dùng hết quota (1 < 1 sai) — Số lượt đã dùng do setup ghi vào chính xác 1 lần trên coupon vừa tạo, nên tiền đề không phụ thuộc lịch sử database",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-271b7552a6b2d3142939",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT1 [SAVE10] — C3 — biên dưới trừ một — Kém biên đúng một đồng — ca soi lỗi lập trình dùng > thay vì >=",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-a35f6e7499e5044f8af7",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT2 [SAVE10] — C3 — đúng biên — Bằng đúng biên nên phải được chấp nhận",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-f999e77b75d28e5e2d7d",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT3 [SAVE10] — C3 — biên dưới cộng một — Vượt biên đúng một đồng nên phải được chấp nhận",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-bb606432c76784290738",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT4 [VIP100] — C5 — còn đúng một lượt (1 < 2) — Quota 2 với 1 lượt đã dùng — cạnh trong của biên C5",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-c2cb66066e3a719b3294",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT5 [VIP100] — C5 — đúng biên quota (2 < 2 sai) — Chạm đúng quota nên phải bị từ chối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-ea59333a98529085253a",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT6 [<NONE>] — Giảm giá lớn hơn tổng đơn — Không mã seed nào chạm tới được tình huống này vì cả bốn đều có min_order_amount >= discount_value",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-29066ca39dbcdad2a5b1",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT7 [SAVE10] — Tính và hiển thị với tổng đơn rất lớn — Giá trị lớn dùng để soi phân nhóm hàng nghìn theo vi-VN và khả năng tràn",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-4026e4e54f3405de70b7",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT1 [SAVE10] — Công thức percent (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã phần trăm",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-cd094f45660a16483175",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT2 [BIGBUY] — Công thức fixed (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã giảm tiền tuyệt đối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-7a457e71ca95594c7956",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT3 [INVALID] — C1 — mã không tồn tại — Mã được sinh theo đúng công thức đặt tên của suite nhưng KHÔNG được tạo trong database, nên chắc chắn không tồn tại",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-5de7b25ea39cb6464c7b",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT4 [<EMPTY>] — C1 — chuỗi mã rỗng, chặn ở tầng giao diện — Nút Áp dụng bị vô hiệu hoá khi ô mã rỗng nên request không bao giờ rời trình duyệt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-d3f29a2d091bd5553ba3",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT5 [EXPIRED] — C2 — mã đã hết hạn — Tổng đơn 200000 nằm trên min 100000 một quãng rộng nên C3 hợp lệ và cách xa biên",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-27ac31c9183cf4f7bbf6",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT6 [SAVE10] — C3 — chưa đạt giá trị đơn tối thiểu — Ca đại diện của lớp không hợp lệ theo C3, đặt cách biên 100000 để phân biệt với BT1 vốn kiểm chính xác biên dưới trừ một",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-907b297f9e96482d27df",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT7 [SAVE10] — C4 — người dùng chưa đăng nhập — Coupon VẪN phải được tạo dù test chạy ở trạng thái đăng xuất — nếu không, một lần đỏ có thể được giải thích bằng C1 thay vì C4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-d3d10293ff7d3c1fa9ec",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT8 [SAVE10] — C5 — đã dùng hết quota (1 < 1 sai) — Số lượt đã dùng do setup ghi vào chính xác 1 lần trên coupon vừa tạo, nên tiền đề không phụ thuộc lịch sử database",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-2d77dd62a10caadb1b88",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT1 [SAVE10] — C3 — biên dưới trừ một — Kém biên đúng một đồng — ca soi lỗi lập trình dùng > thay vì >=",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-1318285ec4d54b38653e",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT2 [SAVE10] — C3 — đúng biên — Bằng đúng biên nên phải được chấp nhận",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-65982af3d56d0682d3d2",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT3 [SAVE10] — C3 — biên dưới cộng một — Vượt biên đúng một đồng nên phải được chấp nhận",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-dd88b2b20111065e6d30",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT4 [VIP100] — C5 — còn đúng một lượt (1 < 2) — Quota 2 với 1 lượt đã dùng — cạnh trong của biên C5",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-b891671fdbd3018b7fe3",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT5 [VIP100] — C5 — đúng biên quota (2 < 2 sai) — Chạm đúng quota nên phải bị từ chối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-4572a85a06a764747cf1",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT6 [<NONE>] — Giảm giá lớn hơn tổng đơn — Không mã seed nào chạm tới được tình huống này vì cả bốn đều có min_order_amount >= discount_value",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-18ab21729ae05588eeb7",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT7 [SAVE10] — Tính và hiển thị với tổng đơn rất lớn — Giá trị lớn dùng để soi phân nhóm hàng nghìn theo vi-VN và khả năng tràn",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-eb0622cc4ce72b6ad662",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT1 [SAVE10] — Công thức percent (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã phần trăm",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-8f10576bc435619b4193",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT2 [BIGBUY] — Công thức fixed (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã giảm tiền tuyệt đối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-68e5f1cd3c971ea3b7d0",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT3 [INVALID] — C1 — mã không tồn tại — Mã được sinh theo đúng công thức đặt tên của suite nhưng KHÔNG được tạo trong database, nên chắc chắn không tồn tại",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-77b692221f30111ca0c4",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT4 [<EMPTY>] — C1 — chuỗi mã rỗng, chặn ở tầng giao diện — Nút Áp dụng bị vô hiệu hoá khi ô mã rỗng nên request không bao giờ rời trình duyệt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-e29f73eeae10cd11a83e",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT5 [EXPIRED] — C2 — mã đã hết hạn — Tổng đơn 200000 nằm trên min 100000 một quãng rộng nên C3 hợp lệ và cách xa biên",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-42bb191abe9b88462786",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT6 [SAVE10] — C3 — chưa đạt giá trị đơn tối thiểu — Ca đại diện của lớp không hợp lệ theo C3, đặt cách biên 100000 để phân biệt với BT1 vốn kiểm chính xác biên dưới trừ một",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-ecc274c789febb36c443",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT7 [SAVE10] — C4 — người dùng chưa đăng nhập — Coupon VẪN phải được tạo dù test chạy ở trạng thái đăng xuất — nếu không, một lần đỏ có thể được giải thích bằng C1 thay vì C4",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-2b3fc26e6ef4612c483e",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT8 [SAVE10] — C5 — đã dùng hết quota (1 < 1 sai) — Số lượt đã dùng do setup ghi vào chính xác 1 lần trên coupon vừa tạo, nên tiền đề không phụ thuộc lịch sử database",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-6416ab5c0117f10afa69",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT1 [SAVE10] — C3 — biên dưới trừ một — Kém biên đúng một đồng — ca soi lỗi lập trình dùng > thay vì >=",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-200158a13d22ec27311f",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT2 [SAVE10] — C3 — đúng biên — Bằng đúng biên nên phải được chấp nhận",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-e9db2af14ef1e89e56dd",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT3 [SAVE10] — C3 — biên dưới cộng một — Vượt biên đúng một đồng nên phải được chấp nhận",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-7fc7a8cd1250c0dcf214",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT4 [VIP100] — C5 — còn đúng một lượt (1 < 2) — Quota 2 với 1 lượt đã dùng — cạnh trong của biên C5",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-1596b5af6524b3048bd9",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT5 [VIP100] — C5 — đúng biên quota (2 < 2 sai) — Chạm đúng quota nên phải bị từ chối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-7fb187387c0ccf6df9c5",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT6 [<NONE>] — Giảm giá lớn hơn tổng đơn — Không mã seed nào chạm tới được tình huống này vì cả bốn đều có min_order_amount >= discount_value",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-e1fa322d24474acc1cc5",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT7 [SAVE10] — Tính và hiển thị với tổng đơn rất lớn — Giá trị lớn dùng để soi phân nhóm hàng nghìn theo vi-VN và khả năng tràn",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-288e40d87dca8ad6c5a2",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-08-09T10:33:16.618Z",
+    "duration": 583.1680000000001,
+    "expected": 0,
+    "skipped": 45,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

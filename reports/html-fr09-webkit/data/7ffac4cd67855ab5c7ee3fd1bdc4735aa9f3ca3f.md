@@ -1,0 +1,269 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: fr09-coupon.spec.ts >> FR-09 — Mã giảm giá trên trang thanh toán >> BT3 [SAVE10] — C3 — biên dưới cộng một — Vượt biên đúng một đồng nên phải được chấp nhận
+- Location: tests\fr09-coupon.spec.ts:447:5
+
+# Error details
+
+```
+Error: BT3 — Tiết kiệm đọc được: "-2.700.009 ₫" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.
+
+expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - link "EShop" [ref=e5]:
+      - /url: /
+    - navigation [ref=e6]:
+      - link "Giỏ hàng" [ref=e7]:
+        - /url: /cart
+      - generic [ref=e8]:
+        - link "Chào, Test User" [ref=e9]:
+          - /url: /profile
+        - button "Thoát" [ref=e10] [cursor=pointer]
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - heading "Xác Nhận Đơn Hàng" [level=2] [ref=e13]
+      - generic [ref=e14]:
+        - heading "Sản phẩm:" [level=3] [ref=e15]
+        - list
+      - generic [ref=e16]:
+        - generic [ref=e17]: "Tổng tiền thanh toán (VND):"
+        - spinbutton [ref=e18]: "300001"
+      - generic [ref=e19]:
+        - generic [ref=e20]: Mã Giảm Giá
+        - generic [ref=e21]:
+          - textbox "Nhập mã giảm giá..." [ref=e22]: 23127362-BT3-20260809T104352197Z
+          - button "Áp dụng" [ref=e23] [cursor=pointer]
+        - generic [ref=e24]:
+          - paragraph [ref=e25]: ✅ Áp dụng thành công! Giảm 10%
+          - paragraph [ref=e26]:
+            - text: "Tiết kiệm:"
+            - strong [ref=e27]: "-2.700.009 ₫"
+          - paragraph [ref=e28]:
+            - text: "Thành tiền:"
+            - strong [ref=e29]: 3.000.010 ₫
+      - generic [ref=e30]: "Tổng thanh toán: 3.000.010 ₫"
+      - button "Xác Nhận Thanh Toán" [ref=e32] [cursor=pointer]
+  - contentinfo [ref=e33]: © 2026 EShop SUT. Dành cho mục đích kiểm thử.
+```
+
+# Test source
+
+```ts
+  114 |     const createdIds: number[] = [];
+  115 |     let adminToken: string | null = null;
+  116 | 
+  117 |     const adminAuth = async (): Promise<string> => {
+  118 |       adminToken ??= (await loginViaApi(request, 'admin')).token;
+  119 |       return adminToken;
+  120 |     };
+  121 | 
+  122 |     await use({
+  123 |       async create(tcId, params) {
+  124 |         const created = await createCoupon(request, await adminAuth(), buildCouponCode(tcId), params);
+  125 |         createdIds.push(created.id);
+  126 |         return created;
+  127 |       },
+  128 |       async seedUses(coupon, times, userToken) {
+  129 |         for (let i = 0; i < times; i += 1) {
+  130 |           await recordCouponUsage(request, userToken, coupon.id);
+  131 |         }
+  132 |       },
+  133 |     });
+  134 | 
+  135 |     // Chỉ có thể có coupon để xoá khi đã từng đăng nhập admin, nên hai điều kiện dưới đây luôn
+  136 |     // đi cùng nhau. Kiểm tra tường minh thay vì ép kiểu, để một thay đổi sau này không âm thầm
+  137 |     // gửi DELETE với token rỗng.
+  138 |     const tokenForCleanup = adminToken;
+  139 |     if (tokenForCleanup !== null) {
+  140 |       for (const id of createdIds) {
+  141 |         await deleteCoupon(request, tokenForCleanup, id);
+  142 |       }
+  143 |     }
+  144 |   },
+  145 | });
+  146 | 
+  147 | interface CaseContext {
+  148 |   checkout: CheckoutCouponPage;
+  149 |   row: Fr09Case;
+  150 |   testInfo: TestInfo;
+  151 | }
+  152 | 
+  153 | /**
+  154 |  * Trục 2 — chuỗi mã được gõ vào ô lấy từ đâu.
+  155 |  * 'generated_absent' dùng đúng công thức đặt tên của suite nhưng coupon KHÔNG được tạo, nên mã
+  156 |  * chắc chắn không tồn tại trong database. Bền hơn hẳn một chuỗi "INVALID" cứng, vốn có thể vô
+  157 |  * tình được ai đó tạo thật.
+  158 |  */
+  159 | const CODE_RESOLVERS: Record<Fr09Case['code_mode'], (row: Fr09Case, created: CreatedCoupon | null) => string> = {
+  160 |   created: (row, created) => {
+  161 |     if (created === null) {
+  162 |       throw new Error(`[fr09] ${row.tc_id} khai code_mode="created" nhưng cột coupon lại là null.`);
+  163 |     }
+  164 |     return created.code;
+  165 |   },
+  166 |   generated_absent: (row) => buildCouponCode(`${row.tc_id}-ABSENT`),
+  167 |   '<EMPTY>': () => '',
+  168 | };
+  169 | 
+  170 | /**
+  171 |  * Đọc AN TOÀN một phần tử có thể không tồn tại, chỉ để dựng chuỗi cho message.
+  172 |  *
+  173 |  * Vì sao count() rồi mới innerText: count() không auto-wait, nó trả về số phần tử khớp tại thời
+  174 |  * điểm gọi và không bao giờ treo. Gọi thẳng innerText lên một phần tử vắng mặt sẽ chờ tới hết
+  175 |  * timeout rồi ném TimeoutError — đúng cái lỗi mà toàn bộ đợt sửa này nhắm vào. Catch bọc ngoài
+  176 |  * xử lý khe hẹp giữa hai lời gọi, khi phần tử bị gỡ đúng lúc.
+  177 |  *
+  178 |  * Hàm này CHỈ dùng cho message. Không một giá trị nào nó trả về được đem đi so sánh, vì "(không
+  179 |  * hiển thị)" không phải một quan sát về SUT mà là một quan sát về chính phép đọc.
+  180 |  */
+  181 | async function peek(locator: Locator): Promise<string> {
+  182 |   try {
+  183 |     if ((await locator.count()) === 0) return '(không hiển thị)';
+  184 |     return (await locator.innerText()).trim();
+  185 |   } catch {
+  186 |     return '(không đọc được)';
+  187 |   }
+  188 | }
+  189 | 
+  190 | /** Mô tả một số tiền cho message lỗi: vừa chuỗi nguyên văn trên màn hình, vừa giá trị đã bóc. */
+  191 | function describeMoney(label: string, raw: string, milli: bigint): string {
+  192 |   return `${label} đọc được: "${raw.trim()}" (= ${milliToPlain(milli)} đồng)`;
+  193 | }
+  194 | 
+  195 | /**
+  196 |  * Khẳng định số tiền giảm khớp công thức đặc tả.
+  197 |  * Hai chế độ, và chế độ nào được chọn là do CHÍNH DỮ LIỆU quyết định (giá trị chính xác có rơi
+  198 |  * vào số nguyên đồng hay không), chứ không do một cột cờ hay một danh sách tc_id.
+  199 |  */
+  200 | function assertDiscountMatchesFormula(actual: bigint, exact: bigint, raw: string, row: Fr09Case): void {
+  201 |   const base = `${row.tc_id} — ${describeMoney('Tiết kiệm', raw, actual)}; công thức đặc tả cho ${milliToPlain(exact)} đồng`;
+  202 | 
+  203 |   if (isWholeDong(exact)) {
+  204 |     // [A2] Giá trị chính xác là số nguyên đồng -> không có chỗ cho làm tròn -> khớp tuyệt đối.
+  205 |     expect(actual, `${base}. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.`).toBe(exact);
+  206 |     return;
+  207 |   }
+  208 | 
+  209 |   // [A2] Có phần thập phân -> đặc tả không quy định làm tròn -> chỉ ràng buộc sai lệch dưới 1 đồng.
+  210 |   const diff = absMilli(actual - exact);
+  211 |   expect(
+  212 |     diff < ONE_DONG,
+  213 |     `${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`,
+> 214 |   ).toBe(true);
+      |     ^ Error: BT3 — Tiết kiệm đọc được: "-2.700.009 ₫" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.
+  215 | }
+  216 | 
+  217 | /** Ca được áp dụng thành công. */
+  218 | async function assertAccepted({ checkout, row, testInfo }: CaseContext): Promise<void> {
+  219 |   const status = await checkout.apply();
+  220 |   testInfo.annotations.push({ type: 'http', description: `POST /api/apply-coupon -> ${status}` });
+  221 | 
+  222 |   if (row.coupon === null) {
+  223 |     throw new Error(`[fr09] ${row.tc_id} kỳ vọng áp dụng được nhưng không có tham số coupon nào.`);
+  224 |   }
+  225 | 
+  226 |   // Đọc AN TOÀN, chỉ để dựng message. Khi ca này đỏ vì SUT từ chối mã, chính chuỗi lỗi của server
+  227 |   // là câu trả lời cho "vì sao đỏ" — nhưng nó nằm ở phần tử có thể không tồn tại, nên phải đi qua
+  228 |   // peek() chứ không qua getErrorText().
+  229 |   const errorIfAny = await peek(checkout.errorMessage);
+  230 | 
+  231 |   // [A1] Mệnh đề chính, và nó phải đứng TRƯỚC mọi lời gọi đọc: khối kết quả thành công hiện diện.
+  232 |   // Nếu SUT từ chối mã, test đỏ ngay tại đây kèm nguyên văn lý do — thay vì đỏ muộn hơn bằng một
+  233 |   // TimeoutError của innerText, vốn không mang theo thông tin gì.
+  234 |   await expect(
+  235 |     checkout.successNotice,
+  236 |     `${row.tc_id} (${row.condition_under_test}) — không thấy dòng "Áp dụng thành công" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: "${errorIfAny}"`,
+  237 |   ).toBeVisible();
+  238 | 
+  239 |   // [A1] Hai dòng số tiền phải hiện diện. Đây vừa là một khẳng định thật (khối kết quả theo đặc tả
+  240 |   // gồm cả Tiết kiệm lẫn Thành tiền), vừa là hàng rào bảo đảm cho bốn lời gọi đọc ngay sau đó.
+  241 |   await expect(
+  242 |     checkout.savedAmount,
+  243 |     `${row.tc_id} — khối kết quả thành công thiếu dòng "Tiết kiệm"`,
+  244 |   ).toBeVisible();
+  245 |   await expect(
+  246 |     checkout.finalAmount,
+  247 |     `${row.tc_id} — khối kết quả thành công thiếu dòng "Thành tiền"`,
+  248 |   ).toBeVisible();
+  249 | 
+  250 |   // [A1] Chiều âm: không được đồng thời hiện thông báo lỗi. Thiếu vế này thì một giao diện hiện
+  251 |   // cả hai khối cùng lúc vẫn xanh.
+  252 |   await expect(
+  253 |     checkout.errorMessage,
+  254 |     `${row.tc_id} — vẫn còn thông báo lỗi "${errorIfAny}" trong khi mã đã được áp dụng thành công`,
+  255 |   ).toBeHidden();
+  256 | 
+  257 |   // Từ đây trở xuống mọi phần tử được đọc đều đã có assertion bảo đảm tồn tại.
+  258 |   const savedRaw = await checkout.savedAmount.innerText();
+  259 |   const finalRaw = await checkout.finalAmount.innerText();
+  260 |   const grandRaw = await checkout.getGrandTotalRaw();
+  261 |   const saved = await checkout.getSavedMilli();
+  262 |   const finalShown = await checkout.getFinalMilli();
+  263 |   const grandShown = await checkout.getGrandTotalMilli();
+  264 |   const total = parseDecimalData(row.order_total);
+  265 |   const exact = exactDiscountMilli(row.coupon.type, row.coupon.discount_value, row.order_total);
+  266 | 
+  267 |   testInfo.annotations.push({
+  268 |     type: 'tiền hiển thị',
+  269 |     description: `Tiết kiệm "${savedRaw.trim()}" | Thành tiền "${finalRaw.trim()}" | Tổng thanh toán "${grandRaw}"`,
+  270 |   });
+  271 |   if (row.rounding_sensitive) {
+  272 |     testInfo.annotations.push({
+  273 |       type: 'giá trị chính xác',
+  274 |       description: `Công thức đặc tả cho discount = ${milliToPlain(exact)} đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn`,
+  275 |     });
+  276 |   }
+  277 | 
+  278 |   // [A2] Số tiền giảm so với công thức đặc tả.
+  279 |   assertDiscountMatchesFormula(saved, exact, savedRaw, row);
+  280 | 
+  281 |   // [A3] Nhất quán nội tại thứ nhất: thành tiền phải bằng đúng tổng trừ đi số tiền giảm — tính
+  282 |   // trên chính các con số ĐANG HIỂN THỊ. Không phụ thuộc quy ước làm tròn của SUT, nên đây là
+  283 |   // ràng buộc mạnh nhất trong cả file mà vẫn không tự chế thêm điều gì.
+  284 |   expect(
+  285 |     finalShown,
+  286 |     `${row.tc_id} — ${describeMoney('Thành tiền', finalRaw, finalShown)} nhưng tổng ${milliToPlain(total)} trừ ${describeMoney('tiết kiệm', savedRaw, saved)} phải ra ${milliToPlain(total - saved)} đồng. SUT làm tròn ở một chỗ mà quên chỗ kia`,
+  287 |   ).toBe(total - saved);
+  288 | 
+  289 |   // [A3] Nhất quán nội tại thứ hai (P6): dòng Tổng thanh toán cuối trang và Thành tiền trong khối
+  290 |   // kết quả do hai biểu thức khác nhau sinh ra. Một giao diện hiện hai con số khác nhau cho cùng
+  291 |   // một đơn hàng là lỗi nghiêm trọng mà mọi assertion phía trên đều bỏ lọt.
+  292 |   expect(
+  293 |     grandShown,
+  294 |     `${row.tc_id} — Tổng thanh toán "${grandRaw}" (= ${milliToPlain(grandShown)} đồng) lệch với Thành tiền "${finalRaw.trim()}" (= ${milliToPlain(finalShown)} đồng)`,
+  295 |   ).toBe(finalShown);
+  296 | 
+  297 |   // [A6] Đặc tả nói mọi số tiền hiển thị qua toLocaleString, nên số từ 1000 đồng trở lên bắt buộc
+  298 |   // có phân nhóm hàng nghìn. Điều kiện kích hoạt suy ra từ giá trị, không từ tc_id.
+  299 |   if (absMilli(grandShown) >= GROUPING_THRESHOLD) {
+  300 |     expect(
+  301 |       isVnGrouped(grandRaw),
+  302 |       `${row.tc_id} — Tổng thanh toán "${grandRaw}" không được phân nhóm hàng nghìn theo vi-VN`,
+  303 |     ).toBe(true);
+  304 |   }
+  305 | }
+  306 | 
+  307 | /** Ca bị từ chối vì một trong các điều kiện C1..C5 không thoả. */
+  308 | async function assertRejected({ checkout, row, testInfo }: CaseContext): Promise<void> {
+  309 |   const status = await checkout.apply();
+  310 |   testInfo.annotations.push({ type: 'http', description: `POST /api/apply-coupon -> ${status}` });
+  311 | 
+  312 |   // Đọc AN TOÀN, chỉ để dựng message cho assertion ngay bên dưới.
+  313 |   const finalIfApplied = await peek(checkout.finalAmount);
+  314 | 
+```

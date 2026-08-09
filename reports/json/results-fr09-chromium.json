@@ -1,0 +1,2096 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\HW04\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/fr09-coupon.spec.ts",
+      "--project=chromium"
+    ],
+    "configFile": "D:\\HW04\\playwright.config.ts",
+    "rootDir": "D:/HW04/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "Run by": "23127362",
+      "Student ID": "23127362",
+      "Run at (ISO 8601)": "2026-08-09T10:40:06.008Z",
+      "Browser project": "chromium",
+      "Feature under test": "FR-09 — Discount Coupon (Pool B)",
+      "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+      "Homework": "HW04 — Automation Testing",
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/HW04/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "Run by": "23127362",
+          "Student ID": "23127362",
+          "Run at (ISO 8601)": "2026-08-09T10:40:06.008Z",
+          "Browser project": "chromium",
+          "Feature under test": "FR-09 — Discount Coupon (Pool B)",
+          "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+          "Homework": "HW04 — Automation Testing",
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/HW04/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/HW04/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "Run by": "23127362",
+          "Student ID": "23127362",
+          "Run at (ISO 8601)": "2026-08-09T10:40:06.008Z",
+          "Browser project": "chromium",
+          "Feature under test": "FR-09 — Discount Coupon (Pool B)",
+          "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+          "Homework": "HW04 — Automation Testing",
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "D:/HW04/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/HW04/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "Run by": "23127362",
+          "Student ID": "23127362",
+          "Run at (ISO 8601)": "2026-08-09T10:40:06.008Z",
+          "Browser project": "chromium",
+          "Feature under test": "FR-09 — Discount Coupon (Pool B)",
+          "SUT": "EShop — https://github.com/ttbhanh/eshop-sut",
+          "Homework": "HW04 — Automation Testing",
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "D:/HW04/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "reports/html-fr09-chromium",
+          "open": "never",
+          "title": "HW04 — FR09 on chromium — Run by: 23127362 — 2026-08-09T10:40:06.008Z"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/json/results-fr09-chromium.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "fr09-coupon.spec.ts",
+      "file": "fr09-coupon.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "FR-09 — Mã giảm giá trên trang thanh toán",
+          "file": "fr09-coupon.spec.ts",
+          "line": 439,
+          "column": 6,
+          "specs": [
+            {
+              "title": "DT1 [SAVE10] — Công thức percent (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã phần trăm",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT1 (DT, n/a) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "type = 'percent' -> discount = total * discount_value / 100; thành tiền = total - discount"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-DT1-20260809T104007889Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    },
+                    {
+                      "type": "tiền hiển thị",
+                      "description": "Tiết kiệm \"-3.600.000 ₫\" | Thành tiền \"4.000.000 ₫\" | Tổng thanh toán \"4.000.000 ₫\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 733,
+                      "error": {
+                        "message": "Error: DT1 — Tiết kiệm đọc được: \"-3.600.000 ₫\" (= -3600000 đồng); công thức đặc tả cho 40000 đồng. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m40000000n\u001b[39m\nReceived: \u001b[31m-3600000000n\u001b[39m",
+                        "stack": "Error: DT1 — Tiết kiệm đọc được: \"-3.600.000 ₫\" (= -3600000 đồng); công thức đặc tả cho 40000 đồng. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m40000000n\u001b[39m\nReceived: \u001b[31m-3600000000n\u001b[39m\n    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:205:93)\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 93,
+                          "line": 205
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 203 |\u001b[39m   \u001b[36mif\u001b[39m (isWholeDong(exact)) {\n \u001b[90m 204 |\u001b[39m     \u001b[90m// [A2] Giá trị chính xác là số nguyên đồng -> không có chỗ cho làm tròn -> khớp tuyệt đối.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 205 |\u001b[39m     expect(actual\u001b[33m,\u001b[39m \u001b[32m`${base}. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.`\u001b[39m)\u001b[33m.\u001b[39mtoBe(exact)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 206 |\u001b[39m     \u001b[36mreturn\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 207 |\u001b[39m   }\n \u001b[90m 208 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 93,
+                            "line": 205
+                          },
+                          "message": "Error: DT1 — Tiết kiệm đọc được: \"-3.600.000 ₫\" (= -3600000 đồng); công thức đặc tả cho 40000 đồng. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m40000000n\u001b[39m\nReceived: \u001b[31m-3600000000n\u001b[39m\n\n\u001b[0m \u001b[90m 203 |\u001b[39m   \u001b[36mif\u001b[39m (isWholeDong(exact)) {\n \u001b[90m 204 |\u001b[39m     \u001b[90m// [A2] Giá trị chính xác là số nguyên đồng -> không có chỗ cho làm tròn -> khớp tuyệt đối.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 205 |\u001b[39m     expect(actual\u001b[33m,\u001b[39m \u001b[32m`${base}. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.`\u001b[39m)\u001b[33m.\u001b[39mtoBe(exact)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 206 |\u001b[39m     \u001b[36mreturn\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 207 |\u001b[39m   }\n \u001b[90m 208 |\u001b[39m\u001b[0m\n\u001b[2m    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:205:93)\u001b[22m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:06.471Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:06.529Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT1 (DT, n/a) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "type = 'percent' -> discount = total * discount_value / 100; thành tiền = total - discount"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT1-20260809T104006471Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"-3.600.000 ₫\" | Thành tiền \"4.000.000 ₫\" | Tổng thanh toán \"4.000.000 ₫\""
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 93,
+                        "line": 205
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 716,
+                      "error": {
+                        "message": "Error: DT1 — Tiết kiệm đọc được: \"-3.600.000 ₫\" (= -3600000 đồng); công thức đặc tả cho 40000 đồng. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m40000000n\u001b[39m\nReceived: \u001b[31m-3600000000n\u001b[39m",
+                        "stack": "Error: DT1 — Tiết kiệm đọc được: \"-3.600.000 ₫\" (= -3600000 đồng); công thức đặc tả cho 40000 đồng. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m40000000n\u001b[39m\nReceived: \u001b[31m-3600000000n\u001b[39m\n    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:205:93)\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 93,
+                          "line": 205
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 203 |\u001b[39m   \u001b[36mif\u001b[39m (isWholeDong(exact)) {\n \u001b[90m 204 |\u001b[39m     \u001b[90m// [A2] Giá trị chính xác là số nguyên đồng -> không có chỗ cho làm tròn -> khớp tuyệt đối.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 205 |\u001b[39m     expect(actual\u001b[33m,\u001b[39m \u001b[32m`${base}. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.`\u001b[39m)\u001b[33m.\u001b[39mtoBe(exact)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 206 |\u001b[39m     \u001b[36mreturn\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 207 |\u001b[39m   }\n \u001b[90m 208 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 93,
+                            "line": 205
+                          },
+                          "message": "Error: DT1 — Tiết kiệm đọc được: \"-3.600.000 ₫\" (= -3600000 đồng); công thức đặc tả cho 40000 đồng. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m40000000n\u001b[39m\nReceived: \u001b[31m-3600000000n\u001b[39m\n\n\u001b[0m \u001b[90m 203 |\u001b[39m   \u001b[36mif\u001b[39m (isWholeDong(exact)) {\n \u001b[90m 204 |\u001b[39m     \u001b[90m// [A2] Giá trị chính xác là số nguyên đồng -> không có chỗ cho làm tròn -> khớp tuyệt đối.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 205 |\u001b[39m     expect(actual\u001b[33m,\u001b[39m \u001b[32m`${base}. Giá trị chính xác là số nguyên đồng nên phải khớp tuyệt đối.`\u001b[39m)\u001b[33m.\u001b[39mtoBe(exact)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 206 |\u001b[39m     \u001b[36mreturn\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 207 |\u001b[39m   }\n \u001b[90m 208 |\u001b[39m\u001b[0m\n\u001b[2m    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:205:93)\u001b[22m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:07.889Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-08-09T10:40:07.942Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT1 (DT, n/a) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "type = 'percent' -> discount = total * discount_value / 100; thành tiền = total - discount"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT1-20260809T104007889Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"-3.600.000 ₫\" | Thành tiền \"4.000.000 ₫\" | Tổng thanh toán \"4.000.000 ₫\""
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-534b7-lớp-hợp-lệ-với-mã-phần-trăm-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 93,
+                        "line": 205
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-fe7dd7621607602a409e",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT2 [BIGBUY] — Công thức fixed (C1..C5 đều thoả) — Ca đại diện của lớp hợp lệ với mã giảm tiền tuyệt đối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT2 (DT, n/a) mô phỏng mã seed BIGBUY"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "type = 'fixed' -> discount = discount_value; thành tiền = total - discount"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-DT2-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    },
+                    {
+                      "type": "tiền hiển thị",
+                      "description": "Tiết kiệm \"50.000 ₫\" | Thành tiền \"550.000 ₫\" | Tổng thanh toán \"550.000 ₫\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 661,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:09.269Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:09.311Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT2 (DT, n/a) mô phỏng mã seed BIGBUY"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "type = 'fixed' -> discount = discount_value; thành tiền = total - discount"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT2-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"50.000 ₫\" | Thành tiền \"550.000 ₫\" | Tổng thanh toán \"550.000 ₫\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-beaee0d0eeccb0d4acee",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT3 [INVALID] — C1 — mã không tồn tại — Mã được sinh theo đúng công thức đặt tên của suite nhưng KHÔNG được tạo trong database, nên chắc chắn không tồn tại",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT3 (DT, n/a) mô phỏng mã seed INVALID"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C1 — mã phải tồn tại và đang bật thì mới được áp dụng"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"(không tạo coupon)\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 404"
+                    },
+                    {
+                      "type": "thông báo lỗi nguyên văn",
+                      "description": "C1 — mã không tồn tại -> \"Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 530,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:10.106Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT3 (DT, n/a) mô phỏng mã seed INVALID"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C1 — mã phải tồn tại và đang bật thì mới được áp dụng"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"(không tạo coupon)\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 404"
+                        },
+                        {
+                          "type": "thông báo lỗi nguyên văn",
+                          "description": "C1 — mã không tồn tại -> \"Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-03b7b514c2e2e177b798",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT4 [<EMPTY>] — C1 — chuỗi mã rỗng, chặn ở tầng giao diện — Nút Áp dụng bị vô hiệu hoá khi ô mã rỗng nên request không bao giờ rời trình duyệt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT4 (DT, n/a) mô phỏng mã seed <EMPTY>"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "Cấu trúc DOM của /checkout — nút Áp dụng có thuộc tính disabled khi ô mã rỗng; đặc tả FR-09 không định nghĩa hành vi cho chuỗi rỗng nên oracle nằm ở tầng giao diện"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "dom"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"(không tạo coupon)\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "cách hiện thực (chỉ ghi nhận, không khẳng định)",
+                      "description": "nút Áp dụng bị vô hiệu hoá khi ô mã rỗng"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 939,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:10.649Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT4 (DT, n/a) mô phỏng mã seed <EMPTY>"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "Cấu trúc DOM của /checkout — nút Áp dụng có thuộc tính disabled khi ô mã rỗng; đặc tả FR-09 không định nghĩa hành vi cho chuỗi rỗng nên oracle nằm ở tầng giao diện"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "dom"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"(không tạo coupon)\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "cách hiện thực (chỉ ghi nhận, không khẳng định)",
+                          "description": "nút Áp dụng bị vô hiệu hoá khi ô mã rỗng"
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-508ad54981f2aed02fe1",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT5 [EXPIRED] — C2 — mã đã hết hạn — Tổng đơn 200000 nằm trên min 100000 một quãng rộng nên C3 hợp lệ và cách xa biên",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT5 (DT, n/a) mô phỏng mã seed EXPIRED"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C2 — chỉ áp dụng được khi hôm nay < expired_at"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-DT5-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 400"
+                    },
+                    {
+                      "type": "thông báo lỗi nguyên văn",
+                      "description": "C2 — mã đã hết hạn -> \"Mã giảm giá đã hết hạn\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 563,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:11.599Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT5 (DT, n/a) mô phỏng mã seed EXPIRED"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C2 — chỉ áp dụng được khi hôm nay < expired_at"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT5-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        },
+                        {
+                          "type": "thông báo lỗi nguyên văn",
+                          "description": "C2 — mã đã hết hạn -> \"Mã giảm giá đã hết hạn\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-6b5f50ce621265c965e5",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT6 [SAVE10] — C3 — chưa đạt giá trị đơn tối thiểu — Ca đại diện của lớp không hợp lệ theo C3, đặt cách biên 100000 để phân biệt với BT1 vốn kiểm chính xác biên dưới trừ một",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT6 (DT, n/a) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C3 — tổng đơn hàng phải >= min_order_amount"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-DT6-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 400"
+                    },
+                    {
+                      "type": "thông báo lỗi nguyên văn",
+                      "description": "C3 — chưa đạt giá trị đơn tối thiểu -> \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 548,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:12.173Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT6 (DT, n/a) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C3 — tổng đơn hàng phải >= min_order_amount"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT6-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        },
+                        {
+                          "type": "thông báo lỗi nguyên văn",
+                          "description": "C3 — chưa đạt giá trị đơn tối thiểu -> \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-fd74e731f1dbcb4c9e81",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT7 [SAVE10] — C4 — người dùng chưa đăng nhập — Coupon VẪN phải được tạo dù test chạy ở trạng thái đăng xuất — nếu không, một lần đỏ có thể được giải thích bằng C1 thay vì C4",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT7 (DT, n/a) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C4 — người dùng phải đã đăng nhập với JWT hợp lệ"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-DT7-20260809T104021481Z\" | lượt dùng seed sẵn 0 | đăng nhập: none"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8134,
+                      "error": {
+                        "message": "Error: DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: hidden\nReceived: visible\nTimeout:  7000ms\n\nCall log:\n\u001b[2m  - DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\u001b[2m    18 × locator resolved to <p>✅ Áp dụng thành công! Giảm 10%</p>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                        "stack": "Error: DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: hidden\nReceived: visible\nTimeout:  7000ms\n\nCall log:\n\u001b[2m  - DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\u001b[2m    18 × locator resolved to <p>✅ Áp dụng thành công! Giảm 10%</p>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at Object.assertRejected (D:\\HW04\\tests\\fr09-coupon.spec.ts:322:5)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 322
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 320 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 321 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"${finalIfApplied}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 322 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 323 |\u001b[39m\n \u001b[90m 324 |\u001b[39m   \u001b[90m// [A1] Bằng chứng thứ hai, và nó KHÔNG thừa: chỉ kiểm \"không có khối thành công\" thì một giao\u001b[39m\n \u001b[90m 325 |\u001b[39m   \u001b[90m// diện im lặng hoàn toàn — không giảm giá, cũng không nói gì — vẫn xanh, trong khi người dùng\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 322
+                          },
+                          "message": "Error: DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: hidden\nReceived: visible\nTimeout:  7000ms\n\nCall log:\n\u001b[2m  - DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\u001b[2m    18 × locator resolved to <p>✅ Áp dụng thành công! Giảm 10%</p>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 320 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 321 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"${finalIfApplied}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 322 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 323 |\u001b[39m\n \u001b[90m 324 |\u001b[39m   \u001b[90m// [A1] Bằng chứng thứ hai, và nó KHÔNG thừa: chỉ kiểm \"không có khối thành công\" thì một giao\u001b[39m\n \u001b[90m 325 |\u001b[39m   \u001b[90m// diện im lặng hoàn toàn — không giảm giá, cũng không nói gì — vẫn xanh, trong khi người dùng\u001b[39m\u001b[0m\n\u001b[2m    at Object.assertRejected (D:\\HW04\\tests\\fr09-coupon.spec.ts:322:5)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:12.730Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT7 (DT, n/a) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C4 — người dùng phải đã đăng nhập với JWT hợp lệ"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT7-20260809T104009269Z\" | lượt dùng seed sẵn 0 | đăng nhập: none"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 322
+                      }
+                    },
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8198,
+                      "error": {
+                        "message": "Error: DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: hidden\nReceived: visible\nTimeout:  7000ms\n\nCall log:\n\u001b[2m  - DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\u001b[2m    18 × locator resolved to <p>✅ Áp dụng thành công! Giảm 10%</p>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                        "stack": "Error: DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: hidden\nReceived: visible\nTimeout:  7000ms\n\nCall log:\n\u001b[2m  - DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\u001b[2m    18 × locator resolved to <p>✅ Áp dụng thành công! Giảm 10%</p>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at Object.assertRejected (D:\\HW04\\tests\\fr09-coupon.spec.ts:322:5)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 322
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 320 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 321 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"${finalIfApplied}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 322 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 323 |\u001b[39m\n \u001b[90m 324 |\u001b[39m   \u001b[90m// [A1] Bằng chứng thứ hai, và nó KHÔNG thừa: chỉ kiểm \"không có khối thành công\" thì một giao\u001b[39m\n \u001b[90m 325 |\u001b[39m   \u001b[90m// diện im lặng hoàn toàn — không giảm giá, cũng không nói gì — vẫn xanh, trong khi người dùng\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 322
+                          },
+                          "message": "Error: DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: hidden\nReceived: visible\nTimeout:  7000ms\n\nCall log:\n\u001b[2m  - DT7 (C4 — người dùng chưa đăng nhập) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"4.000.000 ₫\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\u001b[2m    18 × locator resolved to <p>✅ Áp dụng thành công! Giảm 10%</p>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 320 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 321 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — mã ĐÃ ĐƯỢC ÁP DỤNG dù điều kiện này không thoả; khối kết quả hiển thị Thành tiền \"${finalIfApplied}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 322 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeHidden()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 323 |\u001b[39m\n \u001b[90m 324 |\u001b[39m   \u001b[90m// [A1] Bằng chứng thứ hai, và nó KHÔNG thừa: chỉ kiểm \"không có khối thành công\" thì một giao\u001b[39m\n \u001b[90m 325 |\u001b[39m   \u001b[90m// diện im lặng hoàn toàn — không giảm giá, cũng không nói gì — vẫn xanh, trong khi người dùng\u001b[39m\u001b[0m\n\u001b[2m    at Object.assertRejected (D:\\HW04\\tests\\fr09-coupon.spec.ts:322:5)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:21.481Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-08-09T10:40:21.528Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT7 (DT, n/a) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C4 — người dùng phải đã đăng nhập với JWT hợp lệ"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT7-20260809T104021481Z\" | lượt dùng seed sẵn 0 | đăng nhập: none"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-65fee-ải-thích-bằng-C1-thay-vì-C4-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 322
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-9fd7a86c99f208480b72",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "DT8 [SAVE10] — C5 — đã dùng hết quota (1 < 1 sai) — Số lượt đã dùng do setup ghi vào chính xác 1 lần trên coupon vừa tạo, nên tiền đề không phụ thuộc lịch sử database",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "DT8 (DT, n/a) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C5 — số lần user đã dùng mã phải < max_uses_per_user"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-DT8-20260809T104030444Z\" | lượt dùng seed sẵn 1 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 400"
+                    },
+                    {
+                      "type": "thông báo lỗi nguyên văn",
+                      "description": "C5 — đã dùng hết quota (1 < 1 sai) -> \"Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 734,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:30.444Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:30.493Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "DT8 (DT, n/a) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C5 — số lần user đã dùng mã phải < max_uses_per_user"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-DT8-20260809T104030444Z\" | lượt dùng seed sẵn 1 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        },
+                        {
+                          "type": "thông báo lỗi nguyên văn",
+                          "description": "C5 — đã dùng hết quota (1 < 1 sai) -> \"Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-271b7552a6b2d3142939",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT1 [SAVE10] — C3 — biên dưới trừ một — Kém biên đúng một đồng — ca soi lỗi lập trình dùng > thay vì >=",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT1 (BVA, LB-1) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C3 — 299999 >= 300000 là sai nên phải bị từ chối"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT1-20260809T104030444Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 400"
+                    },
+                    {
+                      "type": "thông báo lỗi nguyên văn",
+                      "description": "C3 — biên dưới trừ một -> \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 616,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:31.369Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT1 (BVA, LB-1) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C3 — 299999 >= 300000 là sai nên phải bị từ chối"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT1-20260809T104030444Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        },
+                        {
+                          "type": "thông báo lỗi nguyên văn",
+                          "description": "C3 — biên dưới trừ một -> \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-a35f6e7499e5044f8af7",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT2 [SAVE10] — C3 — đúng biên — Bằng đúng biên nên phải được chấp nhận",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT2 (BVA, LB) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C3 — 300000 >= 300000 là đúng nên phải được áp dụng"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT2-20260809T104040623Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 400"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8062,
+                      "error": {
+                        "message": "Error: BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: visible\nTimeout: 7000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n",
+                        "stack": "Error: BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: visible\nTimeout: 7000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:237:5)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 237
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 235 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 236 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"${errorIfAny}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 237 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 238 |\u001b[39m\n \u001b[90m 239 |\u001b[39m   \u001b[90m// [A1] Hai dòng số tiền phải hiện diện. Đây vừa là một khẳng định thật (khối kết quả theo đặc tả\u001b[39m\n \u001b[90m 240 |\u001b[39m   \u001b[90m// gồm cả Tiết kiệm lẫn Thành tiền), vừa là hàng rào bảo đảm cho bốn lời gọi đọc ngay sau đó.\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 237
+                          },
+                          "message": "Error: BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: visible\nTimeout: 7000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\n\n\u001b[0m \u001b[90m 235 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 236 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"${errorIfAny}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 237 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 238 |\u001b[39m\n \u001b[90m 239 |\u001b[39m   \u001b[90m// [A1] Hai dòng số tiền phải hiện diện. Đây vừa là một khẳng định thật (khối kết quả theo đặc tả\u001b[39m\n \u001b[90m 240 |\u001b[39m   \u001b[90m// gồm cả Tiết kiệm lẫn Thành tiền), vừa là hàng rào bảo đảm cho bốn lời gọi đọc ngay sau đó.\u001b[39m\u001b[0m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:237:5)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:31.996Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT2 (BVA, LB) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C3 — 300000 >= 300000 là đúng nên phải được áp dụng"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT2-20260809T104030444Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 237
+                      }
+                    },
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 8207,
+                      "error": {
+                        "message": "Error: BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: visible\nTimeout: 7000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n",
+                        "stack": "Error: BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: visible\nTimeout: 7000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:237:5)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 237
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 235 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 236 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"${errorIfAny}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 237 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 238 |\u001b[39m\n \u001b[90m 239 |\u001b[39m   \u001b[90m// [A1] Hai dòng số tiền phải hiện diện. Đây vừa là một khẳng định thật (khối kết quả theo đặc tả\u001b[39m\n \u001b[90m 240 |\u001b[39m   \u001b[90m// gồm cả Tiết kiệm lẫn Thành tiền), vừa là hàng rào bảo đảm cho bốn lời gọi đọc ngay sau đó.\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 237
+                          },
+                          "message": "Error: BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\nExpected: visible\nTimeout: 7000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - BT2 (C3 — đúng biên) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này\" with timeout 7000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Mã Giảm Giá', { exact: true }).locator('..').getByText(/Áp dụng thành công/)\u001b[22m\n\n\n\u001b[0m \u001b[90m 235 |\u001b[39m     checkout\u001b[33m.\u001b[39msuccessNotice\u001b[33m,\u001b[39m\n \u001b[90m 236 |\u001b[39m     \u001b[32m`${row.tc_id} (${row.condition_under_test}) — không thấy dòng \"Áp dụng thành công\" dù đặc tả cho phép áp mã này. Thông báo lỗi trên màn hình: \"${errorIfAny}\"`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 237 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 238 |\u001b[39m\n \u001b[90m 239 |\u001b[39m   \u001b[90m// [A1] Hai dòng số tiền phải hiện diện. Đây vừa là một khẳng định thật (khối kết quả theo đặc tả\u001b[39m\n \u001b[90m 240 |\u001b[39m   \u001b[90m// gồm cả Tiết kiệm lẫn Thành tiền), vừa là hàng rào bảo đảm cho bốn lời gọi đọc ngay sau đó.\u001b[39m\u001b[0m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:237:5)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:40.623Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-08-09T10:40:40.672Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT2 (BVA, LB) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C3 — 300000 >= 300000 là đúng nên phải được áp dụng"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT2-20260809T104040623Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-99975-iên-nên-phải-được-chấp-nhận-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 237
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-f999e77b75d28e5e2d7d",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT3 [SAVE10] — C3 — biên dưới cộng một — Vượt biên đúng một đồng nên phải được chấp nhận",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT3 (BVA, LB+1) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C3 — 300001 >= 300000 là đúng; công thức percent cho đúng 30000.1, đặc tả im lặng về làm tròn nên không được tự chế quy ước"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT3-20260809T104051227Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    },
+                    {
+                      "type": "tiền hiển thị",
+                      "description": "Tiết kiệm \"-2.700.009 ₫\" | Thành tiền \"3.000.010 ₫\" | Tổng thanh toán \"3.000.010 ₫\""
+                    },
+                    {
+                      "type": "giá trị chính xác",
+                      "description": "Công thức đặc tả cho discount = 30000.1 đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 865,
+                      "error": {
+                        "message": "Error: BT3 — Tiết kiệm đọc được: \"-2.700.009 ₫\" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: BT3 — Tiết kiệm đọc được: \"-2.700.009 ₫\" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 214
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 214
+                          },
+                          "message": "Error: BT3 — Tiết kiệm đọc được: \"-2.700.009 ₫\" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m\n\u001b[2m    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\u001b[22m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:49.568Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:49.610Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT3 (BVA, LB+1) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C3 — 300001 >= 300000 là đúng; công thức percent cho đúng 30000.1, đặc tả im lặng về làm tròn nên không được tự chế quy ước"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT3-20260809T104049568Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"-2.700.009 ₫\" | Thành tiền \"3.000.010 ₫\" | Tổng thanh toán \"3.000.010 ₫\""
+                        },
+                        {
+                          "type": "giá trị chính xác",
+                          "description": "Công thức đặc tả cho discount = 30000.1 đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 214
+                      }
+                    },
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 917,
+                      "error": {
+                        "message": "Error: BT3 — Tiết kiệm đọc được: \"-2.700.009 ₫\" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: BT3 — Tiết kiệm đọc được: \"-2.700.009 ₫\" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 214
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 214
+                          },
+                          "message": "Error: BT3 — Tiết kiệm đọc được: \"-2.700.009 ₫\" (= -2700009 đồng); công thức đặc tả cho 30000.1 đồng. Sai lệch 2730009.1 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m\n\u001b[2m    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\u001b[22m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:51.227Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-08-09T10:40:51.280Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT3 (BVA, LB+1) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C3 — 300001 >= 300000 là đúng; công thức percent cho đúng 30000.1, đặc tả im lặng về làm tròn nên không được tự chế quy ước"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT3-20260809T104051227Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"-2.700.009 ₫\" | Thành tiền \"3.000.010 ₫\" | Tổng thanh toán \"3.000.010 ₫\""
+                        },
+                        {
+                          "type": "giá trị chính xác",
+                          "description": "Công thức đặc tả cho discount = 30000.1 đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-5e999-ồng-nên-phải-được-chấp-nhận-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 214
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-bb606432c76784290738",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT4 [VIP100] — C5 — còn đúng một lượt (1 < 2) — Quota 2 với 1 lượt đã dùng — cạnh trong của biên C5",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT4 (BVA, LB-1 của quota) mô phỏng mã seed VIP100"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C5 — 1 < 2 là đúng nên phải được áp dụng"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT4-20260809T104052975Z\" | lượt dùng seed sẵn 1 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    },
+                    {
+                      "type": "tiền hiển thị",
+                      "description": "Tiết kiệm \"100.000 ₫\" | Thành tiền \"300.000 ₫\" | Tổng thanh toán \"300.000 ₫\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1014,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:52.975Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:53.045Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT4 (BVA, LB-1 của quota) mô phỏng mã seed VIP100"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C5 — 1 < 2 là đúng nên phải được áp dụng"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT4-20260809T104052975Z\" | lượt dùng seed sẵn 1 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"100.000 ₫\" | Thành tiền \"300.000 ₫\" | Tổng thanh toán \"300.000 ₫\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-c2cb66066e3a719b3294",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT5 [VIP100] — C5 — đúng biên quota (2 < 2 sai) — Chạm đúng quota nên phải bị từ chối",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT5 (BVA, LB của quota) mô phỏng mã seed VIP100"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "C5 — 2 < 2 là sai nên phải bị từ chối"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT5-20260809T104052975Z\" | lượt dùng seed sẵn 2 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 400"
+                    },
+                    {
+                      "type": "thông báo lỗi nguyên văn",
+                      "description": "C5 — đúng biên quota (2 < 2 sai) -> \"Bạn đã sử dụng mã này 2 lần (đã đạt giới hạn)\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 718,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:54.235Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT5 (BVA, LB của quota) mô phỏng mã seed VIP100"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "C5 — 2 < 2 là sai nên phải bị từ chối"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT5-20260809T104052975Z\" | lượt dùng seed sẵn 2 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 400"
+                        },
+                        {
+                          "type": "thông báo lỗi nguyên văn",
+                          "description": "C5 — đúng biên quota (2 < 2 sai) -> \"Bạn đã sử dụng mã này 2 lần (đã đạt giới hạn)\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-ea59333a98529085253a",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT6 [<NONE>] — Giảm giá lớn hơn tổng đơn — Không mã seed nào chạm tới được tình huống này vì cả bốn đều có min_order_amount >= discount_value",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT6 (BVA, vượt trần giảm giá) mô phỏng mã seed <NONE>"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "Thành tiền cuối = total - discount = 150000 - 200000 = -50000; đặc tả FR-09 không có điều khoản nào chặn giá trị âm"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT6-20260809T104052975Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    },
+                    {
+                      "type": "tiền hiển thị",
+                      "description": "Tiết kiệm \"200.000 ₫\" | Thành tiền \"-50.000 ₫\" | Tổng thanh toán \"-50.000 ₫\""
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 728,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:54.967Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT6 (BVA, vượt trần giảm giá) mô phỏng mã seed <NONE>"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "Thành tiền cuối = total - discount = 150000 - 200000 = -50000; đặc tả FR-09 không có điều khoản nào chặn giá trị âm"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT6-20260809T104052975Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"200.000 ₫\" | Thành tiền \"-50.000 ₫\" | Tổng thanh toán \"-50.000 ₫\""
+                        }
+                      ],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-29066ca39dbcdad2a5b1",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            },
+            {
+              "title": "BT7 [SAVE10] — Tính và hiển thị với tổng đơn rất lớn — Giá trị lớn dùng để soi phân nhóm hàng nghìn theo vi-VN và khả năng tràn",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [
+                    {
+                      "type": "truy vết HW02",
+                      "description": "BT7 (BVA, UI — giá trị rất lớn) mô phỏng mã seed SAVE10"
+                    },
+                    {
+                      "type": "căn cứ đặc tả",
+                      "description": "Đặc tả không đặt cận trên cho tổng đơn; công thức percent cho đúng 999999999.9, đặc tả im lặng về làm tròn"
+                    },
+                    {
+                      "type": "nguồn oracle",
+                      "description": "spec"
+                    },
+                    {
+                      "type": "tiền đề đã dựng",
+                      "description": "mã thật \"23127362-BT7-20260809T104057031Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                    },
+                    {
+                      "type": "http",
+                      "description": "POST /api/apply-coupon -> 200"
+                    },
+                    {
+                      "type": "tiền hiển thị",
+                      "description": "Tiết kiệm \"-89.999.999.991 ₫\" | Thành tiền \"99.999.999.990 ₫\" | Tổng thanh toán \"99.999.999.990 ₫\""
+                    },
+                    {
+                      "type": "giá trị chính xác",
+                      "description": "Công thức đặc tả cho discount = 999999999.9 đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn"
+                    }
+                  ],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 717,
+                      "error": {
+                        "message": "Error: BT7 — Tiết kiệm đọc được: \"-89.999.999.991 ₫\" (= -89999999991 đồng); công thức đặc tả cho 999999999.9 đồng. Sai lệch 90999999990.9 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: BT7 — Tiết kiệm đọc được: \"-89.999.999.991 ₫\" (= -89999999991 đồng); công thức đặc tả cho 999999999.9 đồng. Sai lệch 90999999990.9 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 214
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 214
+                          },
+                          "message": "Error: BT7 — Tiết kiệm đọc được: \"-89.999.999.991 ₫\" (= -89999999991 đồng); công thức đặc tả cho 999999999.9 đồng. Sai lệch 90999999990.9 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m\n\u001b[2m    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\u001b[22m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-08-09T10:40:55.707Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT7 (BVA, UI — giá trị rất lớn) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "Đặc tả không đặt cận trên cho tổng đơn; công thức percent cho đúng 999999999.9, đặc tả im lặng về làm tròn"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT7-20260809T104052975Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"-89.999.999.991 ₫\" | Thành tiền \"99.999.999.990 ₫\" | Tổng thanh toán \"99.999.999.990 ₫\""
+                        },
+                        {
+                          "type": "giá trị chính xác",
+                          "description": "Công thức đặc tả cho discount = 999999999.9 đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 214
+                      }
+                    },
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 949,
+                      "error": {
+                        "message": "Error: BT7 — Tiết kiệm đọc được: \"-89.999.999.991 ₫\" (= -89999999991 đồng); công thức đặc tả cho 999999999.9 đồng. Sai lệch 90999999990.9 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: BT7 — Tiết kiệm đọc được: \"-89.999.999.991 ₫\" (= -89999999991 đồng); công thức đặc tả cho 999999999.9 đồng. Sai lệch 90999999990.9 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\n    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\n    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7",
+                        "location": {
+                          "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                          "column": 5,
+                          "line": 214
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                            "column": 5,
+                            "line": 214
+                          },
+                          "message": "Error: BT7 — Tiết kiệm đọc được: \"-89.999.999.991 ₫\" (= -89999999991 đồng); công thức đặc tả cho 999999999.9 đồng. Sai lệch 90999999990.9 đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n\u001b[0m \u001b[90m 212 |\u001b[39m     diff \u001b[33m<\u001b[39m \u001b[33mONE_DONG\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 213 |\u001b[39m     \u001b[32m`${base}. Sai lệch ${milliToPlain(diff)} đồng, vượt ngưỡng 1 đồng — tức SUT không chỉ làm tròn mà tính sai.`\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 215 |\u001b[39m }\n \u001b[90m 216 |\u001b[39m\n \u001b[90m 217 |\u001b[39m \u001b[90m/** Ca được áp dụng thành công. */\u001b[39m\u001b[0m\n\u001b[2m    at assertDiscountMatchesFormula (D:\\HW04\\tests\\fr09-coupon.spec.ts:214:5)\u001b[22m\n\u001b[2m    at Object.assertAccepted (D:\\HW04\\tests\\fr09-coupon.spec.ts:279:3)\u001b[22m\n\u001b[2m    at D:\\HW04\\tests\\fr09-coupon.spec.ts:488:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[fr09] Run by: 23127362 — 2026-08-09T10:40:57.031Z\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-08-09T10:40:57.088Z",
+                      "annotations": [
+                        {
+                          "type": "truy vết HW02",
+                          "description": "BT7 (BVA, UI — giá trị rất lớn) mô phỏng mã seed SAVE10"
+                        },
+                        {
+                          "type": "căn cứ đặc tả",
+                          "description": "Đặc tả không đặt cận trên cho tổng đơn; công thức percent cho đúng 999999999.9, đặc tả im lặng về làm tròn"
+                        },
+                        {
+                          "type": "nguồn oracle",
+                          "description": "spec"
+                        },
+                        {
+                          "type": "tiền đề đã dựng",
+                          "description": "mã thật \"23127362-BT7-20260809T104057031Z\" | lượt dùng seed sẵn 0 | đăng nhập: user"
+                        },
+                        {
+                          "type": "http",
+                          "description": "POST /api/apply-coupon -> 200"
+                        },
+                        {
+                          "type": "tiền hiển thị",
+                          "description": "Tiết kiệm \"-89.999.999.991 ₫\" | Thành tiền \"99.999.999.990 ₫\" | Tổng thanh toán \"99.999.999.990 ₫\""
+                        },
+                        {
+                          "type": "giá trị chính xác",
+                          "description": "Công thức đặc tả cho discount = 999999999.9 đồng (không làm tròn); đặc tả không quy định quy tắc làm tròn"
+                        }
+                      ],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium-retry1\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium-retry1\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium-retry1\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\HW04\\test-results\\fr09-coupon-FR-09-—-Mã-giả-9c77f-theo-vi-VN-và-khả-năng-tràn-chromium-retry1\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "D:\\HW04\\tests\\fr09-coupon.spec.ts",
+                        "column": 5,
+                        "line": 214
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a554c4a113fbe72ba729-4026e4e54f3405de70b7",
+              "file": "fr09-coupon.spec.ts",
+              "line": 447,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-08-09T10:40:06.013Z",
+    "duration": 52313.19,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}
