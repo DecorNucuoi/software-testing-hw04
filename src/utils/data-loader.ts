@@ -25,6 +25,24 @@ export function loadJson<T>(fileName: string): T[] {
 }
 
 /**
+ * Đọc file JSON có gốc là OBJECT (không phải mảng).
+ *
+ * Vì sao cần thêm hàm này bên cạnh loadJson: bộ dữ liệu FR-15 có một khối quy ước dùng chung
+ * cho cả 24 ca — ngân sách 255 ký tự của tên, ký tự đệm, giá trị mặc định của description /
+ * imageUrl, danh sách tên ngắn mà sweeper cần biết. Nhét khối đó vào từng dòng là cách chắc
+ * chắn nhất để 24 bản sao của cùng một hằng số trôi dạt khỏi nhau sau vài lần sửa.
+ * loadJson giữ nguyên hành vi cũ; FR-06 và FR-09 không bị ảnh hưởng.
+ */
+export function loadJsonObject<T>(fileName: string): T {
+  const raw = readFileSync(resolve(DATA_DIR, fileName), 'utf-8');
+  const parsed = JSON.parse(raw) as T;
+  if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error(`[data-loader] ${fileName} phải có gốc là một object JSON.`);
+  }
+  return parsed;
+}
+
+/**
  * Đọc file CSV trong thư mục /data.
  * `columns: true` -> mỗi dòng thành object theo header; `trim` để tránh lỗi khoảng trắng thừa
  * khi file được mở/chỉnh sửa bằng Excel.

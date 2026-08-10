@@ -25,6 +25,18 @@ import {
 export default defineConfig({
   testDir: './tests',
 
+  /**
+   * Dọn rác dữ liệu của các lần chạy TRƯỚC, chạy một lần ở đầu mỗi tiến trình Playwright.
+   *
+   * Đặt ở globalSetup chứ không globalTeardown là có chủ ý: trường hợp để lại rác nguy hiểm nhất
+   * là tiến trình bị giết giữa chừng (Ctrl-C, crash, mất điện) — lúc đó globalTeardown KHÔNG chạy.
+   * Sweep ở đầu run là thứ duy nhất luôn được thực thi.
+   *
+   * Sweeper chỉ xoá bản ghi mang tiền tố tên do suite này sở hữu, không bao giờ xoá theo khoảng id,
+   * và KHÔNG được phép ném lỗi — nó là công việc vệ sinh, không phải điều kiện tiên quyết của run.
+   */
+  globalSetup: './src/global-setup',
+
   /* Chạy tuần tự trong 1 file để tránh đụng độ dữ liệu (SUT dùng SQLite chung, không có transaction rollback). */
   fullyParallel: false,
   workers: 1,
