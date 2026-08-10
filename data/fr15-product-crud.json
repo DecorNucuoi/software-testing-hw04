@@ -1,0 +1,648 @@
+{
+  "meta": {
+    "feature": "FR-15",
+    "title": "Admin Product CRUD — Thêm / Xem / Sửa / Xoá sản phẩm",
+    "source": "HW02 — bảng thiết kế ca kiểm thử (24 ca: DT1..DT14, BT1..BT10)",
+    "name_limit_chars": 255,
+    "spec_quotes": {
+      "name": "Tên sản phẩm: BẮT BUỘC, tối đa 255 ký tự",
+      "price": "Giá: BẮT BUỘC, là số DƯƠNG (> 0), KHÔNG có giá trị tối đa",
+      "category": "Danh mục: BẮT BUỘC, chọn từ danh sách có sẵn",
+      "isolation": "Khi sửa một sản phẩm, CHỈ sản phẩm đó thay đổi; mọi sản phẩm khác giữ nguyên. Tương tự với xoá."
+    },
+    "defaults": {
+      "description": "FR-15 automation fixture",
+      "image_url": ""
+    },
+    "oracle_source_values": {
+      "spec": "Kỳ vọng suy ra TRỰC TIẾP từ một câu trong đặc tả FR-15. Sai kỳ vọng = SUT sai.",
+      "derived": "Đặc tả không nói thẳng, nhưng kỳ vọng là hệ quả logic bắt buộc của một câu trong đặc tả. Phải ghi rõ chuỗi suy diễn ở spec_basis.",
+      "observation": "Đặc tả IM LẶNG. Không có kỳ vọng pass/fail. Ca này ghi lại hành vi thực tế vào report; chỉ những bất biến nêu trong checks mới được assert."
+    },
+    "check_vocabulary": {
+      "row-present": "Bảng sản phẩm có đúng 1 hàng mang tên này, và ô giá của hàng đó khớp giá đã nhập sau khi chuẩn hoá qua admin-price.",
+      "row-absent": "Không có hàng nào mang tên này, ở CẢ bảng lẫn GET /api/products.",
+      "table-count-unchanged": "Tổng số hàng sau thao tác bằng đúng số hàng trước thao tác.",
+      "whole-table-diff-empty": "Snapshot API trước/sau khác nhau rỗng: added = removed = changed = [].",
+      "only-target-changed": "Diff có đúng 1 phần tử trong changed, đúng id mục tiêu, và tập trường đổi bằng đúng tập trường đã gửi.",
+      "target-removed": "Diff có đúng 1 phần tử trong removed, đúng id mục tiêu; added và changed rỗng.",
+      "witness-unchanged": "Sản phẩm chứng còn nguyên từng trường, so theo id chứ không theo vị trí hiển thị.",
+      "ui-api-agree": "Tầng 3 của oracle: snapshot toàn bảng dựng từ DOM và dựng từ GET /api/products bằng nhau sau khi chuẩn hoá.",
+      "category-in-edit-form": "Bảng KHÔNG có cột danh mục, nên danh mục được kiểm qua giá trị của <select> khi mở form Sửa, đối chiếu với category_id từ API.",
+      "at-least-one-created": "Có ít nhất 1 sản phẩm được tạo — đây là phần suy ra được từ đặc tả (đầu vào hợp lệ phải lưu được).",
+      "created-count-le-clicks": "Số sản phẩm được tạo không vượt quá số lần bấm. Vượt quá là bug thật, không phải chuyện quan sát.",
+      "record-observation": "Ghi giá trị quan sát được vào annotation / attachment của report. KHÔNG so với một hằng số nào."
+    },
+    "notes": [
+      "Mọi giá đều lưu dưới dạng CHUỖI, kể cả giá hợp lệ thông thường. Nếu để JSON number thì JSON.parse ép về IEEE-754 double và 99999999999999999999999 biến thành 1e+23 ngay lúc nạp file — mất mát xảy ra trước khi test kịp chạy, và không có cách nào phát hiện.",
+      "Phân biệt ba trạng thái của một ô nhập: có giá trị (kind=literal/generated), chuỗi RỖNG (kind=empty), và không đụng tới (trường vắng mặt). CSV không biểu diễn được ba trạng thái này bằng ba giá trị khác nhau — đó là lý do chọn JSON, giống FR-09.",
+      "Không có ca nào kiểm ràng buộc 'Danh mục BẮT BUỘC': thẻ <select> của form luôn có một option được chọn, nên trạng thái 'không chọn danh mục' không tới được bằng thao tác giao diện. Ghi ở mục hạn chế.",
+      "Kỳ vọng 'bị từ chối' được kiểm bằng TRẠNG THÁI DỮ LIỆU (không có hàng mới, không hàng nào đổi), KHÔNG bằng nội dung thông báo lỗi. Đặc tả FR-15 không quy định thông báo lỗi, nên biến nó thành điều kiện pass là đưa giả định của người viết test thành ràng buộc lên SUT. Thông báo thực tế vẫn được ghi lại dưới dạng quan sát."
+    ]
+  },
+
+  "name_builder": {
+    "strategy": "prefix-then-filler",
+    "template": "{STUDENT_ID}-FR15-{RUN_STAMP}-{BROWSER_TAG}-{TC}-{SLOT}-",
+    "filler": { "ascii": "x", "vietnamese": "ế" },
+    "min_owned_length": 64,
+    "slots": {
+      "in": "giá trị nhập của chính ca đó",
+      "tg": "sản phẩm mục tiêu dựng sẵn",
+      "wt": "sản phẩm chứng dựng sẵn",
+      "up": "giá trị mới khi Update"
+    },
+    "rule": "Tên dài L ký tự = phần tiền tố sinh theo template (khoảng 49 ký tự) + ký tự đệm lặp lại cho đủ đúng L. Tiền tố nằm ở ĐẦU, không phải ở cuối: nếu SUT âm thầm cắt tên 256 ký tự xuống 255 thì phần bị cắt là đuôi đệm, dấu vết sở hữu vẫn còn nguyên và sweeper vẫn nhận ra hàng rác đó.",
+    "uniqueness": "Tiền tố chứa RUN_STAMP (duy nhất theo lần chạy), BROWSER_TAG (duy nhất theo tiến trình), TC và SLOT (duy nhất theo ca và theo vai trò). Hai tên bất kỳ trong toàn bộ suite không thể trùng nhau, kể cả khi cùng độ dài.",
+    "budget_note": "Tiền tố chiếm khoảng 49 trong ngân sách 255 ký tự, nên mọi độ dài yêu cầu từ 64 trở lên đều dựng được. Bộ dựng phải NÉM LỖI nếu length nhỏ hơn độ dài tiền tố — đó là lỗi dữ liệu, phải lộ ra lúc dựng chứ không được im lặng cắt ngắn tiền tố (cắt tiền tố là làm hàng đó vô hình với sweeper).",
+    "unowned_names_note": "Ba ca biên dưới của độ dài tên (0, 1, 2 ký tự) KHÔNG thể mang tiền tố — 49 ký tự không nhét vừa 1 ký tự. Với chúng, tên là literal khai báo tường minh bên dưới, và việc dọn dẹp phụ thuộc HOÀN TOÀN vào afterEach. Để lưới an toàn vẫn phủ được, các literal này được liệt kê ở sweeper_extra_exact_names và sweeper xoá theo SO KHỚP TUYỆT ĐỐI cả chuỗi."
+  },
+
+  "sweeper_extra_exact_names": ["~", "~~"],
+
+  "cases": [
+    {
+      "tc_id": "DT1",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "none — đại diện lớp hợp lệ",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "only-target-changed"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Admin có thể Thêm sản phẩm; tên hợp lệ (<= 255) và giá dương thoả cả ba ràng buộc đầu vào.",
+      "description": "Ca đại diện lớp hợp lệ. HW02 ghi 'vài ký tự' nhưng điều được kiểm ở đây là LỚP TƯƠNG ĐƯƠNG hợp lệ, không phải độ ngắn — độ ngắn là việc của BT2/BT3. Chọn 64 ký tự để tên vẫn mang đủ tiền tố sở hữu."
+    },
+    {
+      "tc_id": "DT3",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "name = chuỗi rỗng",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "empty" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty"],
+        "observe": ["thong-bao-loi", "co-che-chan (HTML5 required hay tang ung dung)"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: BẮT BUỘC.",
+      "description": "Lớp không hợp lệ của ràng buộc bắt buộc. Ô tên có thuộc tính required nên trình duyệt có thể chặn trước khi request rời máy — cơ chế chặn được GHI LẠI, nhưng kỳ vọng pass/fail chỉ dựa trên trạng thái dữ liệu."
+    },
+    {
+      "tc_id": "DT4",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "name = 256 ký tự có dấu tiếng Việt",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 256, "charset": "vietnamese", "slot": "in" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["thong-bao-loi", "do-dai-thuc-te-neu-SUT-cat-ngan"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự.",
+      "description": "Bản EP của ràng buộc độ dài, cố ý dùng ký tự tiếng Việt có dấu để lấy một điểm dữ liệu về xử lý đa byte. 256 ký tự tiếng Việt vượt ngưỡng theo CẢ hai cách hiểu (255 ký tự hay 255 byte), nên kỳ vọng vẫn không nhập nhằng. Ca phân biệt được hai cách hiểu là '255 ký tự tiếng Việt' — không nằm trong 24 ca, xem mục hạn chế."
+    },
+    {
+      "tc_id": "DT5",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "price = số âm",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "-100" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: là số DƯƠNG (> 0).",
+      "description": "Đại diện lớp không hợp lệ 'giá âm', cách biên 0 một khoảng rõ ràng để không lẫn với BT7/BT8."
+    },
+    {
+      "tc_id": "DT6",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "price = chuỗi không phải số",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "abc" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["gia-tri-thuc-te-con-lai-trong-o-gia", "thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: là SỐ dương.",
+      "description": "Ô giá là <input type=\"number\">. Trình duyệt có thể từ chối nhận ký tự chữ, khiến giá trị thực tế trong ô là rỗng — lúc đó DT6 THOÁI HOÁ thành DT7 và không còn kiểm được điều nó định kiểm. Vì vậy ca này bắt buộc đọc lại và ghi giá trị thực tế còn trong ô; nếu là rỗng thì phải ghi rõ trong báo cáo rằng ràng buộc 'phải là số' chưa được kiểm ở tầng ứng dụng."
+    },
+    {
+      "tc_id": "DT7",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "price = chuỗi rỗng",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "empty" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: BẮT BUỘC.",
+      "description": "Lớp không hợp lệ của ràng buộc bắt buộc trên trường giá."
+    },
+    {
+      "tc_id": "DT8",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "price = số rất lớn",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "99999999999999999999999" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "observe",
+        "checks": ["ui-api-agree", "record-observation"],
+        "observe": [
+          "chap-nhan-hay-tu-choi",
+          "gia-tri-price-tra-ve-tu-GET-/api/products",
+          "chuoi-hien-thi-trong-o-gia-cua-bang",
+          "kind-doc-duoc-tu-admin-price (du kien: scientific)"
+        ]
+      },
+      "oracle_source": "observation",
+      "spec_basis": "Giá: KHÔNG có giá trị tối đa. Đặc tả im lặng về việc chấp nhận hay từ chối số vượt tầm biểu diễn, nên không có kỳ vọng pass/fail.",
+      "description": "Đặc tả không đặt cận trên, nên từ chối cũng không sai đặc tả mà chấp nhận cũng không. Điều DUY NHẤT vẫn assert được là bất biến: dù SUT quyết thế nào, bảng và API phải nói cùng một điều. Giá trị lưu dạng chuỗi vì 99999999999999999999999 vượt xa Number.MAX_SAFE_INTEGER."
+    },
+
+    {
+      "tc_id": "BT1",
+      "technique": "BVA",
+      "bva_role": "duoi-bien-duoi (0 ký tự)",
+      "operation": "create",
+      "varied_factor": "name.length = 0",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "empty" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: BẮT BUỘC — độ dài 0 nằm ngoài miền hợp lệ [1, 255].",
+      "description": "Cùng đầu vào với DT3 nhưng khác thẩm quyền lập luận: DT3 là đại diện lớp không hợp lệ (EP), BT1 là điểm ngay dưới biên dưới của miền độ dài (BVA). HW02 yêu cầu trình bày cả hai kỹ thuật nên giữ cả hai; trùng đầu vào là hệ quả tất yếu của việc biên dưới nằm sát lớp rỗng."
+    },
+    {
+      "tc_id": "BT2",
+      "technique": "BVA",
+      "bva_role": "bien-duoi (1 ký tự)",
+      "operation": "create",
+      "varied_factor": "name.length = 1",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "literal", "value": "~", "owned": false, "cleanup": "afterEach-only" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "only-target-changed"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự — không có cận dưới nào khác ngoài 'bắt buộc', nên 1 ký tự là hợp lệ.",
+      "description": "Không thể mang tiền tố sở hữu: 1 ký tự không chứa nổi 49 ký tự định danh. Dùng literal '~' — một ký tự ASCII không xuất hiện trong dữ liệu seed và không giống bất kỳ tên sản phẩm thật nào — và khai báo nó ở sweeper_extra_exact_names để lưới an toàn vẫn xoá được."
+    },
+    {
+      "tc_id": "BT3",
+      "technique": "BVA",
+      "bva_role": "bien-duoi + 1 (2 ký tự)",
+      "operation": "create",
+      "varied_factor": "name.length = 2",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "literal", "value": "~~", "owned": false, "cleanup": "afterEach-only" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "only-target-changed"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự — 2 ký tự nằm trong miền hợp lệ.",
+      "description": "Điểm liền kề biên dưới. Cùng ràng buộc dọn dẹp như BT2."
+    },
+    {
+      "tc_id": "BT4",
+      "technique": "BVA",
+      "bva_role": "bien-tren - 1 (254 ký tự)",
+      "operation": "create",
+      "varied_factor": "name.length = 254",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 254, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "only-target-changed"],
+        "observe": ["do-dai-ten-doc-lai-tu-API"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự.",
+      "description": "Điểm ngay dưới biên trên. Đọc lại độ dài từ API để phát hiện việc cắt ngắn âm thầm."
+    },
+    {
+      "tc_id": "BT5",
+      "technique": "BVA",
+      "bva_role": "bien-tren (255 ký tự)",
+      "operation": "create",
+      "varied_factor": "name.length = 255",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 255, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "only-target-changed"],
+        "observe": ["do-dai-ten-doc-lai-tu-API"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự — 255 nằm TRONG miền hợp lệ.",
+      "description": "Đúng biên trên. Dùng ký tự ASCII để ca này chỉ đo một thứ duy nhất là độ dài; nếu dùng ký tự tiếng Việt thì một lần đỏ sẽ có hai cách giải thích (lệch biên một bậc, hay SUT đếm byte)."
+    },
+    {
+      "tc_id": "BT6",
+      "technique": "BVA",
+      "bva_role": "tren-bien-tren (256 ký tự)",
+      "operation": "create",
+      "varied_factor": "name.length = 256",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 256, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["thong-bao-loi", "co-hang-nao-ten-255-ky-tu-xuat-hien-khong (cat ngan am tham)"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự.",
+      "description": "Điểm ngay trên biên trên, phiên bản ASCII. Ngoài việc không có hàng mới, còn phải kiểm không có hàng nào mang 255 ký tự đầu của tên này — cắt ngắn rồi lưu là một cách 'từ chối' giả mà đếm số hàng vẫn phát hiện được, nhưng row-absent theo tên đầy đủ thì không."
+    },
+    {
+      "tc_id": "BT7",
+      "technique": "BVA",
+      "bva_role": "duoi-bien (price = -1)",
+      "operation": "create",
+      "varied_factor": "price = -1",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "-1" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: là số DƯƠNG (> 0).",
+      "description": "Giá trị âm sát biên 0 nhất trong miền số nguyên."
+    },
+    {
+      "tc_id": "BT8",
+      "technique": "BVA",
+      "bva_role": "tai-bien (price = 0)",
+      "operation": "create",
+      "varied_factor": "price = 0",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "0" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["table-count-unchanged", "whole-table-diff-empty", "row-absent"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: là số DƯƠNG (> 0) — quy tắc là NGHIÊM NGẶT lớn hơn 0, nên 0 bị loại.",
+      "description": "Điểm dễ sai nhất của cả nhóm giá: lập trình viên viết >= 0 thay vì > 0 thì chỉ ca này bắt được."
+    },
+    {
+      "tc_id": "BT9",
+      "technique": "BVA",
+      "bva_role": "bien-hop-le-nho-nhat (price = 1)",
+      "operation": "create",
+      "varied_factor": "price = 1",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "1" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "only-target-changed"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: là số DƯƠNG (> 0) — 1 là giá trị nguyên dương nhỏ nhất.",
+      "description": "Cặp đối xứng với BT8: cùng nhau chúng chốt đúng vị trí biên."
+    },
+    {
+      "tc_id": "BT10",
+      "technique": "BVA",
+      "bva_role": "khong-co-bien-tren",
+      "operation": "create",
+      "varied_factor": "price = số rất lớn",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "99999999999999999999999" },
+        "category": { "kind": "index", "index": 0 }
+      },
+      "expected": {
+        "outcome": "observe",
+        "checks": ["ui-api-agree", "record-observation"],
+        "observe": [
+          "chap-nhan-hay-tu-choi",
+          "gia-tri-price-tra-ve-tu-GET-/api/products",
+          "chuoi-hien-thi-trong-o-gia-cua-bang",
+          "kind-doc-duoc-tu-admin-price"
+        ]
+      },
+      "oracle_source": "observation",
+      "spec_basis": "Giá: KHÔNG có giá trị tối đa. Không có biên trên thì không có biên để kiểm — chỉ còn hành vi để quan sát.",
+      "description": "Bản BVA của DT8. Giữ cùng giá trị để hai ca cho cùng một kết quả quan sát; nếu chúng khác nhau thì bản thân sự khác nhau đó là dấu hiệu hành vi không tất định và phải báo cáo."
+    },
+
+    {
+      "tc_id": "DT2",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "read",
+      "varied_factor": "none — ca duy nhất không ghi",
+      "fixtures": [
+        {
+          "role": "target",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "tg" },
+          "price": { "kind": "literal", "text": "300000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        }
+      ],
+      "input": {},
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "ui-api-agree", "category-in-edit-form", "whole-table-diff-empty"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Admin có thể Xem sản phẩm; tên/giá/danh mục phải hiển thị đúng.",
+      "description": "Đối tượng đọc là sản phẩm DO TEST TỰ TẠO qua API, không phải sản phẩm seed. Tiền đề dựng bằng API chứ không bằng form, để một lỗi ở đường Create không làm đỏ ca Read. Bảng KHÔNG có cột danh mục nên phần 'danh mục hiển thị đúng' được kiểm qua <select> của form Sửa, đối chiếu với category_id từ API. whole-table-diff-empty có mặt vì đây là ca không ghi: mở form Sửa mà dữ liệu đổi là một bug."
+    },
+    {
+      "tc_id": "DT9",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "create",
+      "varied_factor": "so lan bam nut Luu",
+      "fixtures": [],
+      "input": {
+        "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "in" },
+        "price": { "kind": "literal", "text": "300000" },
+        "category": { "kind": "index", "index": 0 },
+        "repeat_submit": 3
+      },
+      "expected": {
+        "outcome": "observe",
+        "checks": ["at-least-one-created", "created-count-le-clicks", "ui-api-agree", "record-observation"],
+        "observe": ["so-san-pham-duoc-tao", "cac-id-duoc-tao", "noi-dung-tung-hang-tao-ra"]
+      },
+      "oracle_source": "observation",
+      "spec_basis": "Đặc tả FR-15 KHÔNG nói gì về chống bấm trùng / chống gửi lặp. Vì vậy 'tạo ra đúng 1 sản phẩm' KHÔNG phải kỳ vọng của đặc tả, và 'tạo ra 3 sản phẩm' cũng không phải lỗi theo đặc tả.",
+      "description": "repeat_submit = 3 nằm trong dữ liệu, không trong code. Chọn 3 chứ không phải 2 vì 3 phân biệt được ba hành vi khác nhau: không chống trùng (3 hàng), chống trùng hoàn toàn (1 hàng), chống trùng một phần (2 hàng); với 2 lần bấm thì hai trường hợp sau lẫn vào nhau. Con số thực tế đi vào report; hai điều được ASSERT đều là hệ quả bắt buộc chứ không phải con số bịa: (1) ít nhất một sản phẩm phải được tạo, vì đầu vào hợp lệ thì đặc tả nói phải lưu được; (2) số sản phẩm tạo ra không được lớn hơn số lần bấm, vì tạo nhiều hơn số lần yêu cầu là hành vi không thể biện minh bằng bất kỳ cách đọc nào của đặc tả."
+    },
+    {
+      "tc_id": "DT10",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "update",
+      "varied_factor": "none — đại diện lớp Update hợp lệ",
+      "fixtures": [
+        {
+          "role": "target",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "tg" },
+          "price": { "kind": "literal", "text": "300000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        },
+        {
+          "role": "witness",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "wt" },
+          "price": { "kind": "literal", "text": "777000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        }
+      ],
+      "input": {
+        "update": {
+          "name": { "kind": "generated", "length": 72, "charset": "ascii", "slot": "up" },
+          "price": { "kind": "literal", "text": "450000" }
+        }
+      },
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-present", "only-target-changed", "witness-unchanged", "ui-api-agree"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Admin có thể Sửa sản phẩm; khi sửa một sản phẩm, CHỈ sản phẩm đó thay đổi.",
+      "description": "Ca cốt lõi của mệnh đề cô lập. Đổi đồng thời tên và giá là CỐ Ý: quy tắc 'chỉ một yếu tố sai' áp cho ca âm; ở ca dương, đổi hai trường cùng lúc làm phép so 'tập trường đổi đúng bằng tập trường đã gửi' có sức phân biệt cao hơn — nó bắt được cả trường hợp SUT ghi đè trường không được yêu cầu đổi. Tên mới dài 72 để khác hẳn tên cũ (64) và không thể trùng."
+    },
+    {
+      "tc_id": "DT11",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "update",
+      "varied_factor": "name mới = chuỗi rỗng",
+      "fixtures": [
+        {
+          "role": "target",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "tg" },
+          "price": { "kind": "literal", "text": "300000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        },
+        {
+          "role": "witness",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "wt" },
+          "price": { "kind": "literal", "text": "777000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        }
+      ],
+      "input": { "update": { "name": { "kind": "empty" } } },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["whole-table-diff-empty", "witness-unchanged"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: BẮT BUỘC — ràng buộc đầu vào áp cho cả Thêm lẫn Sửa.",
+      "description": "Khi Sửa bị từ chối, chính sản phẩm mục tiêu cũng phải giữ nguyên. Vì vậy check ở đây là whole-table-diff-empty chứ không phải only-target-changed: một thao tác bị từ chối không được để lại bất kỳ dấu vết nào, kể cả trên đối tượng nó định sửa."
+    },
+    {
+      "tc_id": "DT12",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "update",
+      "varied_factor": "name mới = 256 ký tự",
+      "fixtures": [
+        {
+          "role": "target",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "tg" },
+          "price": { "kind": "literal", "text": "300000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        },
+        {
+          "role": "witness",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "wt" },
+          "price": { "kind": "literal", "text": "777000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        }
+      ],
+      "input": {
+        "update": { "name": { "kind": "generated", "length": 256, "charset": "ascii", "slot": "up" } }
+      },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["whole-table-diff-empty", "witness-unchanged"],
+        "observe": ["thong-bao-loi", "co-hang-nao-ten-255-ky-tu-xuat-hien-khong"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Tên sản phẩm: tối đa 255 ký tự — ràng buộc áp cho cả Sửa.",
+      "description": "Bản Update của BT6. Dùng ASCII để giữ ca chỉ đo độ dài."
+    },
+    {
+      "tc_id": "DT13",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "update",
+      "varied_factor": "price mới = số âm",
+      "fixtures": [
+        {
+          "role": "target",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "tg" },
+          "price": { "kind": "literal", "text": "300000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        },
+        {
+          "role": "witness",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "wt" },
+          "price": { "kind": "literal", "text": "777000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        }
+      ],
+      "input": { "update": { "price": { "kind": "literal", "text": "-100" } } },
+      "expected": {
+        "outcome": "rejected",
+        "checks": ["whole-table-diff-empty", "witness-unchanged"],
+        "observe": ["thong-bao-loi"]
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Giá: là số DƯƠNG (> 0) — ràng buộc áp cho cả Sửa.",
+      "description": "Chỉ đổi giá, giữ nguyên tên, để một lần đỏ chỉ quy được về ràng buộc giá."
+    },
+    {
+      "tc_id": "DT14",
+      "technique": "EP",
+      "bva_role": "n/a",
+      "operation": "delete",
+      "varied_factor": "none — đại diện lớp Delete hợp lệ",
+      "fixtures": [
+        {
+          "role": "target",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "tg" },
+          "price": { "kind": "literal", "text": "300000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        },
+        {
+          "role": "witness",
+          "name": { "kind": "generated", "length": 64, "charset": "ascii", "slot": "wt" },
+          "price": { "kind": "literal", "text": "777000" },
+          "category": { "kind": "index", "index": 0 },
+          "created_via": "api"
+        }
+      ],
+      "input": {},
+      "expected": {
+        "outcome": "accepted",
+        "checks": ["row-absent", "target-removed", "witness-unchanged", "ui-api-agree"],
+        "observe": []
+      },
+      "oracle_source": "spec",
+      "spec_basis": "Admin có thể Xoá sản phẩm; khi xoá, chỉ sản phẩm đó biến mất, mọi sản phẩm khác giữ nguyên.",
+      "description": "Nút Xóa xoá thẳng, không có hộp thoại xác nhận — nên ca này không có bước xác nhận nào, và điều đó tự nó là một quan sát về khả dụng đáng ghi vào báo cáo (thao tác phá huỷ không hoàn tác được mà không hỏi lại)."
+    }
+  ]
+}
